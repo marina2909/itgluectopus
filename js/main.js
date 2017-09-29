@@ -1,7 +1,10 @@
 let app = {
     canvasWidth: 700,
-    canvasHeight: 700
+    canvasHeight: 700,
+    size: 70
 };
+
+let keysDown, player;
 
 function renderCanvas () {
     app.canvas  = document.getElementById("mainCanvas");
@@ -13,23 +16,27 @@ function renderCanvas () {
 
 
 function updateState () {
+    player.updateState();
 }
 
 function draw () {
     renderCanvas();
     renderMaze();
+    player.draw();
 }
 
 function renderMaze () {
 }
 
 function loop(timestamp) {
-    updateState()
+    updateState();
     draw();
     requestAnimationFrame(loop)
 }
 
 
 function startGame () {
+    keysDown = new KeysDown();
+    player = new Player(keysDown.getKeys());
     requestAnimationFrame(loop)
 }

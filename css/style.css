@@ -1,3 +1,16 @@
+.main{
+	height: 90vh;
+}
+
 #mainCanvas {
-    border: 1px solid black;
+    box-shadow: 2px 2px 2px 2px #dabef4;
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: calc(50% - 350px);
+    left: calc(50% - 350px);
+    background-color: #e6e6e6;
 }
