@@ -25,7 +25,7 @@ function updateState () {
 
 function draw () {
     renderCanvas();
-    renderMaze();
+    //renderMaze();
     player.draw();
 }
 
