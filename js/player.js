@@ -25,17 +25,25 @@ class Player {
 
     updateState() {
         if (!(frame % 10)) {
-            if (this.keysDown['left'] || this.keysDown['a']){
-                this.x--;
+            if (this.keysDown['left'] || this.keysDown['a']) {
+                if (this.x > 0 && this.isHorizontalMovePossible(this.x-1, this.y)) {
+                    this.x--;
+                }
             }
-            if (this.keysDown['right'] || this.keysDown['d']){
-                this.x++;
+            if (this.keysDown['right'] || this.keysDown['d']) {
+                if (this.isHorizontalMovePossible(this.x, this.y)) {
+                    this.x++;
+                }
             }
-            if (this.keysDown['up'] || this.keysDown['w']){
-                this.y--;
+            if (this.keysDown['up'] || this.keysDown['w']) {
+                if (this.y > 0 && this.isVerticalMovePossible(this.x, this.y-1)) {
+                    this.y--;
+                }
             }
-            if (this.keysDown['down'] || this.keysDown['s']){
-                this.y++;
+            if (this.keysDown['down'] || this.keysDown['s']) {
+                if (this.isVerticalMovePossible(this.x, this.y)) {
+                    this.y++;
+                }
             }
         }
 
@@ -47,6 +55,14 @@ class Player {
         if (!(frame % 30)) {
             this.sprite.setImageSrc(this.sprite.getImageSrc().includes(imgSrc1) ? imgSrc2 : imgSrc1);
         }
+    }
+
+    isHorizontalMovePossible (x, y) {
+        return maze.hori[y][x] === true;
+    }
+
+    isVerticalMovePossible (x, y) {
+        return maze.vert[y][x] === true;
     }
 
     limitWithinCanvas () {
@@ -88,6 +104,7 @@ class Player {
     }
 
     draw () {
+<<<<<<< Updated upstream
         // this.print();
         this.sprite.draw();
     }
@@ -97,5 +114,15 @@ class Player {
     //     console.log("y: " + this.y*app.size);
     //     console.log("  ");
     // }
+=======
+        this.sprite.draw();
+    }
+
+    print () {
+        console.log("x: " + this.x);
+        console.log("y: " + this.y);
+        console.log("  ");
+    }
+>>>>>>> Stashed changes
 
 }
