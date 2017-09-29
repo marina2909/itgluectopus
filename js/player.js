@@ -44,13 +44,25 @@ class Player {
 
     limitWithinCanvas () {
         // check if player is within limitations of canvasWidt
-        if (this.x * app.size > app.canvasWidth - app.size) this.x--;
-        if (this.x * app.size < 0) this.x = 0;
+        if (this.x * app.size > app.canvasWidth - app.size) {
+            this.x--;
+            this.addRightClass();
+        }
+        if (this.x * app.size < 0) {
+            this.x = 0;
+
+        }
 
         if (this.y * app.size > app.canvasHeight - app.size) this.y--;
         if (this.y * app.size < 0) this.y = 0;
     }
 
+    addRightClass () {
+        app.canvas.className = "borderRight";
+        setTimeout(() => {
+            app.canvas.classList.remove("borderRight");
+        }, 500);
+    }
 
     draw () {
         this.print();

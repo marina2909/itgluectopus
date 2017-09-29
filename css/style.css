@@ -14,3 +14,11 @@
     left: calc(50% - 350px);
     background-color: #e6e6e6;
 }
+
+.borderRight {
+    border-right: solid 2px #ff0000;
+}
+
+.borderLeft {
+    border-left: solid 2px #ff0000;
+}
