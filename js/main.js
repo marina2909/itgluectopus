@@ -80,7 +80,7 @@ function collectPoints () {
         if (playerPosition.x === documents.list[i].x && playerPosition.y === documents.list[i].y) {
             points++;
             documents.list.splice(i, 1);
-            document.getElementById("points").innerHTML = "Points collected  " + points;
+            document.getElementById("points").innerHTML = "Points Collected:  " + points;
         }
     }
 }
