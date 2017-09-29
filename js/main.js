@@ -91,6 +91,10 @@ function load () {
 	var img = new Image();
 	img.onload = function () {
 		app.ctx.drawImage(img, (app.canvasWidth-585)/2, (app.canvasHeight-585)/2, 580, 585);
+        app.ctx.fillStyle = "green";
+        app.ctx.font = "30px krakman";
+        app.ctx.textAlign = "center";
+        app.ctx.fillText("Press Play to start the game!", app.canvasWidth/2, app.canvasHeight - 50);
 	}
 	img.src = "imgs/player1.png";
 }
