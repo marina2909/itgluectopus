@@ -30,7 +30,18 @@ function draw () {
 }
 
 function renderMaze(maze) {
-
+	for (let i=0; i<coords.hori.length; i++) {
+		app.ctx.beginPath();
+		app.ctx.moveTo(coords.hori[i].x*app.size, coords.hori[i].y*app.size);
+		app.ctx.lineTo(coords.hori[i].x*app.size+app.size, coords.hori[i].y*app.size);
+		app.ctx.stroke();
+	}
+	for (let i=0; i<coords.vert.length; i++) {
+		app.ctx.beginPath();
+		app.ctx.moveTo(coords.vert[i].x*app.size, coords.hori[i].y*app.size);
+		app.ctx.lineTo(coords.vert[i].x*app.size, coords.hori[i].y*app.size+app.size);
+		app.ctx.stroke();
+	}
 }
 
 function generateMaze (x, y) {
@@ -87,7 +98,7 @@ function convertToCoords(m) {
 			if (m.vert[j][k]) {
 				coords.hori.push({
 					x: k,
-					y: j
+					y: j+1
 				});
 			}
 		}
