@@ -85,3 +85,10 @@ function collectPoints () {
         }
     }
 }
+
+function load () {
+    app.canvas = document.getElementById("mainCanvas");
+    let ctx = app.canvas.getContext('2d');
+    let img = "imgs/player1.png";
+    ctx.drawImage(new Image(img), 0, 0, app.canvasWidth, app.canvasHeight);
+}
