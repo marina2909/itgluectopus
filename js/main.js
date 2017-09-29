@@ -87,8 +87,10 @@ function collectPoints () {
 }
 
 function load () {
-    app.canvas = document.getElementById("mainCanvas");
-    let ctx = app.canvas.getContext('2d');
-    let img = "imgs/player1.png";
-    ctx.drawImage(new Image(img), 0, 0, app.canvasWidth, app.canvasHeight);
+	renderCanvas();
+	var img = new Image();
+	img.onload = function () {
+		app.ctx.drawImage(img, (app.canvasWidth-585)/2, (app.canvasHeight-585)/2, 580, 585);
+	}
+	img.src = "imgs/player1.png";
 }
