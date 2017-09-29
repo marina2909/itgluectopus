@@ -1,23 +1,43 @@
 let app = {
-    canvasWidth: 800,
-    canvasHeight: 800,
-    size: 40
+    canvasWidth: 780,
+    canvasHeight: 780,
+    size: 60,
+    gameOver: false
 };
 let maze = generateMaze(app.canvasHeight/app.size, app.canvasWidth/app.size);
 
-let keysDown, player, documents, points=0;
+let keysDown,
+    player,
+    documents,
+    points=0;
 
 function renderCanvas () {
-    app.canvas  = document.getElementById("mainCanvas");
+    app.canvas = document.getElementById("mainCanvas");
 	app.canvas.width = app.canvasWidth;
 	app.canvas.height = app.canvasHeight;
 	app.ctx = app.canvas.getContext('2d');
 	app.ctx.fillStyle = "white";
 }
 
-function updateState () {
+function updateState (time) {
     player.updateState();
     collectPoints();
+
+    setTime(time);
+    if (app.gameOver) {
+        alert("GameOver! Total points " + points);
+    } else {
+        requestAnimationFrame(loop);
+    }
+}
+
+function setTime (time) {
+    lastFrameTime = time;
+    if (Math.round((lastFrameTime - startFrame)/1000) > 30) {
+        app.gameOver = true;
+    }
+    let timeID = document.getElementById("time");
+    timeID.innerHTML = "Remaining time: " + (30 - Math.round((lastFrameTime - startFrame)/1000));
 }
 
 function draw () {
@@ -27,14 +47,16 @@ function draw () {
     documents.draw();
 }
 
-function loop(timestamp) {
-    updateState();
+function loop(time) {
+    updateState(time);
     draw();
-    requestAnimationFrame(loop)
 }
 
 
 function startGame () {
+    app.gameOver = false;
+    startFrame = performance.now();
+    lastFrame = performance.now();
     keysDown = new KeysDown();
     player = new Player(keysDown.getKeys(), maze);
     documents = new Documents();
