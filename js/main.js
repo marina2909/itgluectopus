@@ -4,9 +4,9 @@ let app = {
     size: 60,
     gameOver: false
 };
-let maze = generateMaze(app.canvasHeight/app.size, app.canvasWidth/app.size);
 
-let keysDown,
+let maze,
+	keysDown,
     player,
     documents,
     points=0;
@@ -43,7 +43,7 @@ function setTime (time) {
 
 function draw () {
     renderCanvas();
-    renderMaze(maze);
+    maze.renderMaze();
     player.draw();
     documents.draw();
 }
@@ -55,6 +55,7 @@ function loop(time) {
 
 
 function startGame () {
+	maze = new Maze(app.canvasHeight/app.size, app.canvasWidth/app.size);
     app.gameOver = false;
     startFrame = performance.now();
     lastFrame = performance.now();
