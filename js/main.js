@@ -8,7 +8,7 @@ const coords = {
 	vert: []
 };
 
-let keysDown, player;
+let keysDown, player, documents;
 
 function renderCanvas () {
     app.canvas  = document.getElementById("mainCanvas");
@@ -27,6 +27,7 @@ function draw () {
     renderCanvas();
     //renderMaze();
     player.draw();
+    documents.draw();
 }
 
 function renderMaze(maze) {
@@ -156,5 +157,6 @@ function startGame () {
 	convertToCoords(generateMaze(8, 11));
     keysDown = new KeysDown();
     player = new Player(keysDown.getKeys());
+    documents = new Documents();
     requestAnimationFrame(loop)
 }
