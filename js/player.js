@@ -9,11 +9,12 @@ var frame = 0;
 */
 
 class Player {
-    constructor (keysDown) {
+    constructor (keysDown, maze) {
         this.x = 0;
         this.y = 0;
         this.keysDown = keysDown;
         this.sprite = new Sprite(imgSrc1, this.x, this.y, app.size, app.size);
+        this.maze = maze;
     }
 
     getPosition () {
@@ -58,11 +59,11 @@ class Player {
     }
 
     isHorizontalMovePossible (x, y) {
-        return maze.hori[y][x] === true;
+        return this.maze.hori[y][x] === true;
     }
 
     isVerticalMovePossible (x, y) {
-        return maze.vert[y][x] === true;
+        return this.maze.vert[y][x] === true;
     }
 
     limitWithinCanvas () {

@@ -1,8 +1,9 @@
 let app = {
-    canvasWidth: 700,
-    canvasHeight: 700,
-    size: 70
+    canvasWidth: 800,
+    canvasHeight: 800,
+    size: 40
 };
+let maze = generateMaze(app.canvasHeight/app.size, app.canvasWidth/app.size);
 
 let keysDown, player, documents, points=0;
 
@@ -34,10 +35,8 @@ function loop(timestamp) {
 
 
 function startGame () {
-	maze = generateMaze(app.canvasHeight/app.size, app.canvasWidth/app.size);
-	convertToCoords(maze);
     keysDown = new KeysDown();
-    player = new Player(keysDown.getKeys());
+    player = new Player(keysDown.getKeys(), maze);
     documents = new Documents();
     requestAnimationFrame(loop)
 }

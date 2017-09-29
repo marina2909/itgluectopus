@@ -1,9 +1,3 @@
-const coords = {
-	hori: [],
-	vert: []
-};
-let maze = {};
-
 function renderMaze(maze) {
 	for (let i=0; i<maze.x; i++) {
 		for (let j=0; j<maze.y; j++) {
@@ -75,24 +69,4 @@ function generateMaze (x, y) {
 		hori: hori,
 		vert: vert
 	};
-}
-
-function convertToCoords(m) {
-	for (var j= 0; j<m.x; j++) {
-		for (var k=0; k<m.y; k++) {
-			if (m.vert[j][k]) {
-				coords.hori.push({
-					x: k,
-					y: j+1
-				});
-			}
-		}
-		for (var k=0; k<m.y; k++)
-			if (m.hori[j][k]) {
-				coords.vert.push({
-					x: k+1,
-					y: j
-				});
-			}
-	}
 }
