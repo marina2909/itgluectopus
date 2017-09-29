@@ -10,7 +10,8 @@ let maze,
 	keysDown,
     player,
     documents,
-    points=0;
+    points=0,
+    requestId;
 
 function renderCanvas () {
     app.canvas = document.getElementById("mainCanvas");
@@ -28,7 +29,7 @@ function updateState (time) {
     if (app.gameOver) {
         //alert("GameOver! Total points " + points);
     } else {
-        requestAnimationFrame(loop);
+        requestId = requestAnimationFrame(loop);
     }
 }
 
@@ -63,6 +64,9 @@ function loop(time) {
 
 
 function startGame () {
+    if (requestId) {
+        cancelAnimationFrame(requestId);
+    }
 	maze = new Maze(app.canvasHeight/app.size, app.canvasWidth/app.size);
     points = 0;
     document.getElementById("points").innerHTML = "Points Collected:  " + points;
@@ -72,7 +76,7 @@ function startGame () {
     keysDown = new KeysDown();
     player = new Player(keysDown.getKeys(), maze);
     documents = new Documents();
-    requestAnimationFrame(loop)
+    requestId = requestAnimationFrame(loop)
 }
 
 function collectPoints () {
