@@ -104,25 +104,15 @@ class Player {
     }
 
     draw () {
-<<<<<<< Updated upstream
-        // this.print();
         this.sprite.draw();
     }
 
-    // print () {
-    //     console.log("x: " + this.x*app.size);
-    //     console.log("y: " + this.y*app.size);
-    //     console.log("  ");
-    // }
-=======
-        this.sprite.draw();
-    }
 
     print () {
         console.log("x: " + this.x);
         console.log("y: " + this.y);
         console.log("  ");
     }
->>>>>>> Stashed changes
+
 
 }
