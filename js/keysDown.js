@@ -3,7 +3,11 @@ var keys = {
     39: 'right',
     38: 'up',
     40: 'down',
-    32: 'space'
+    32: 'space',
+    65: 'a',
+    83: 's',
+    68: 'd',
+    87: 'w'
 };
 
 class KeysDown {

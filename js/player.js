@@ -18,16 +18,16 @@ class Player {
 
     updateState() {
         if (!(frame % 25)) {
-            if (this.keysDown['left']){
+            if (this.keysDown['left'] || this.keysDown['a']){
                 this.x--;
             }
-            if (this.keysDown['right']){
+            if (this.keysDown['right'] || this.keysDown['d']){
                 this.x++;
             }
-            if (this.keysDown['up']){
+            if (this.keysDown['up'] || this.keysDown['w']){
                 this.y--;
             }
-            if (this.keysDown['down']){
+            if (this.keysDown['down'] || this.keysDown['s']){
                 this.y++;
             }
         }
