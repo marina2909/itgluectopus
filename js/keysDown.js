@@ -15,9 +15,11 @@ class KeysDown {
     constructor () {
         this.kDown = {};
         addEventListener('keydown', e => {
+            e.preventDefault();
     		this.kDown[keys[e.keyCode]] = true;
     	});
         addEventListener('keyup', e => {
+            e.preventDefault();
     		this.kDown[keys[e.keyCode]] = false;
     	});
     }
