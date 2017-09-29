@@ -1,4 +1,6 @@
 function renderMaze(maze) {
+	app.ctx.lineWidth = 3;
+	app.ctx.strokeStyle="#777777";
 	for (let i=0; i<maze.x; i++) {
 		for (let j=0; j<maze.y; j++) {
 			if (maze.vert[i][j] === true) {
@@ -21,6 +23,15 @@ function renderMaze(maze) {
 			}
 		}
 	}
+	app.ctx.beginPath();
+	app.ctx.moveTo(0, maze.x*app.size);
+	app.ctx.lineTo(0, 0);
+	app.ctx.stroke();
+
+	app.ctx.beginPath();
+	app.ctx.moveTo(maze.y*app.size, 0);
+	app.ctx.lineTo(0, 0);
+	app.ctx.stroke();
 }
 
 function generateMaze (x, y) {
