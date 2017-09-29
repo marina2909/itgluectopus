@@ -8,6 +8,14 @@
 	font-weight: 700;
 }
 
+#points{
+	font-size: 20;
+}
+
+#time{
+	font-size: 20;
+}
+
 #mainCanvas {
     box-shadow: 2px 2px 2px 2px #dabef4;
     background-color: #e6e6e6;

@@ -33,11 +33,12 @@ function updateState (time) {
 
 function setTime (time) {
     lastFrameTime = time;
-    if (Math.round((lastFrameTime - startFrame)/1000) > 30) {
+    if (Math.round((lastFrameTime - startFrame)/1000) > 45) {
         app.gameOver = true;
     }
     let timeID = document.getElementById("time");
-    timeID.innerHTML = "Remaining time: " + (30 - Math.round((lastFrameTime - startFrame)/1000));
+    var remainingTime = (45 - Math.round((lastFrameTime - startFrame)/1000));
+    timeID.innerHTML = "Remaining time: " + (remainingTime > 0 ? remainingTime : 0);
 }
 
 function draw () {
