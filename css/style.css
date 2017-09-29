@@ -2,6 +2,15 @@
 	height: 90vh;
 }
 
+.title {
+	font-size: 40;
+	position: relative;
+	color: #dabef4;
+	font-weight: 700;
+	left: calc(50% - 130px);
+	top: calc(50% - 450px);
+}
+
 #mainCanvas {
     box-shadow: 2px 2px 2px 2px #dabef4;
     position: relative;

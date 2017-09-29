@@ -16,8 +16,15 @@ class Player {
         this.sprite = new Sprite(imgSrc1, this.x, this.y, app.size, app.size);
     }
 
+    getPosition () {
+        return {
+            x: this.sprite.x,
+            y: this.sprite.y
+        }
+    }
+
     updateState() {
-        if (!(frame % 25)) {
+        if (!(frame % 10)) {
             if (this.keysDown['left'] || this.keysDown['a']){
                 this.x--;
             }
@@ -81,14 +88,14 @@ class Player {
     }
 
     draw () {
-        this.print();
+        // this.print();
         this.sprite.draw();
     }
 
-    print () {
-        console.log("x: " + this.x*app.size);
-        console.log("y: " + this.y*app.size);
-        console.log("  ");
-    }
+    // print () {
+    //     console.log("x: " + this.x*app.size);
+    //     console.log("y: " + this.y*app.size);
+    //     console.log("  ");
+    // }
 
 }

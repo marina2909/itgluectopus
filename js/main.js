@@ -4,7 +4,7 @@ let app = {
     size: 70
 };
 
-let keysDown, player, documents;
+let keysDown, player, documents, points=0;
 
 function renderCanvas () {
     app.canvas  = document.getElementById("mainCanvas");
@@ -16,6 +16,7 @@ function renderCanvas () {
 
 function updateState () {
     player.updateState();
+    collectPoints();
 }
 
 function draw () {
@@ -39,4 +40,14 @@ function startGame () {
     player = new Player(keysDown.getKeys());
     documents = new Documents();
     requestAnimationFrame(loop)
+}
+
+function collectPoints () {
+    var playerPosition = player.getPosition();
+    for (let i=0; i<documents.list.length; i++) {
+        if (playerPosition.x === documents.list[i].x && playerPosition.y === documents.list[i].y) {
+            points++;
+            documents.list.splice(i, 1);
+        }
+    }
 }
