@@ -25,7 +25,7 @@ function updateState (time) {
 
     setTime(time);
     if (app.gameOver) {
-        alert("GameOver! Total points " + points);
+        //alert("GameOver! Total points " + points);
     } else {
         requestAnimationFrame(loop);
     }
@@ -46,6 +46,13 @@ function draw () {
     maze.renderMaze();
     player.draw();
     documents.draw();
+    if (app.gameOver) {
+        app.ctx.font = "40px Comic Sans MS";
+        app.ctx.fillStyle = "red";
+        app.ctx.textAlign = "center";
+        app.ctx.fillText("Game Over! Total points: " + points, app.canvasWidth/2, app.canvasHeight/2);
+        app.ctx.fillText("Click Play to try again!", app.canvasWidth/2, app.canvasHeight/2 + 50);
+    }
 }
 
 function loop(time) {
