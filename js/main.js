@@ -63,6 +63,8 @@ function loop(time) {
 
 function startGame () {
 	maze = new Maze(app.canvasHeight/app.size, app.canvasWidth/app.size);
+    points = 0;
+    document.getElementById("points").innerHTML = "Points collected  " + points;
     app.gameOver = false;
     startFrame = performance.now();
     lastFrame = performance.now();
