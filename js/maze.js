@@ -8,6 +8,7 @@ class Maze {
 	renderMaze() {
 		app.ctx.lineWidth = 3;
 		app.ctx.strokeStyle="#777777";
+
 		for (let i=0; i<this.x; i++) {
 			for (let j=0; j<this.y; j++) {
 				if (this.vert[i][j] === true) {

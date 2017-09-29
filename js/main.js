@@ -2,6 +2,7 @@ let app = {
     canvasWidth: 780,
     canvasHeight: 780,
     size: 60,
+	totalTime: 45,
     gameOver: false
 };
 
@@ -33,11 +34,11 @@ function updateState (time) {
 
 function setTime (time) {
     lastFrameTime = time;
-    if (Math.round((lastFrameTime - startFrame)/1000) > 45) {
+    if (Math.round((lastFrameTime - startFrame)/1000) > app.totalTime) {
         app.gameOver = true;
     }
     let timeID = document.getElementById("time");
-    var remainingTime = (45 - Math.round((lastFrameTime - startFrame)/1000));
+    var remainingTime = (app.totalTime - Math.round((lastFrameTime - startFrame)/1000));
     timeID.innerHTML = "Remaining time: " + (remainingTime > 0 ? remainingTime : 0);
 }
 
@@ -47,7 +48,7 @@ function draw () {
     player.draw();
     documents.draw();
     if (app.gameOver) {
-        app.ctx.font = "40px Comic Sans MS";
+        app.ctx.font = "40px krakman";
         app.ctx.fillStyle = "red";
         app.ctx.textAlign = "center";
         app.ctx.fillText("Game Over! Total points: " + points, app.canvasWidth/2, app.canvasHeight/2);
@@ -64,7 +65,7 @@ function loop(time) {
 function startGame () {
 	maze = new Maze(app.canvasHeight/app.size, app.canvasWidth/app.size);
     points = 0;
-    document.getElementById("points").innerHTML = "Points collected  " + points;
+    document.getElementById("points").innerHTML = "Points Collected:  " + points;
     app.gameOver = false;
     startFrame = performance.now();
     lastFrame = performance.now();
